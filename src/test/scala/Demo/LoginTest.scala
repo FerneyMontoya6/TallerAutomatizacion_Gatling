@@ -17,7 +17,7 @@ class LoginTest extends Simulation{
     exec(http("login")
       .post(s"users/login")
        //Recibir información de la cuenta
-      .body(StringBody("""{"email": "${email}", "password": "${password}"}""")).asJson
+      .body(StringBody(s"""{"email": "$email", "password": "$password"}""")).asJson
       .check(status.is(200))
       .check(jsonPath("$.token").saveAs("authToken"))
     )
